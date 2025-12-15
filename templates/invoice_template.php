@@ -142,12 +142,16 @@ if ($logoPath && file_exists($logoPath)) {
         <?php endif; ?>
     </div>
 
-    <div class="company-info">
-        <strong><?= htmlspecialchars($companyName) ?></strong><br>
-        <?= htmlspecialchars($companyPhone) ?><br>
-        <?= htmlspecialchars($companyEmail) ?><br>
-        <?= htmlspecialchars($companyAddress) ?>
-    </div>
+   <div class="company-info">
+    <strong><?= htmlspecialchars($companyName) ?></strong><br>
+
+    <?php if ($companyAddress): ?>
+        <?= nl2br(htmlspecialchars($companyAddress)) ?><br>
+    <?php endif; ?>
+
+    <?= htmlspecialchars($companyPhone) ?><br>
+    <?= htmlspecialchars($companyEmail) ?>
+</div>
 </div>
 
 <!-- TITLE -->
