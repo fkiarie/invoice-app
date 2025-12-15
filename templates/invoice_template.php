@@ -1,10 +1,14 @@
 <?php
-
+/**
+ * Invoice PDF Template
+ * Values sourced from .env for environment flexibility
+ */
 
 $companyName  = getenv('COMPANY_NAME') ?: 'Company Name';
 $companyEmail = getenv('COMPANY_EMAIL') ?: 'info@example.com';
-$companyAddress = getenv('COMPANY_ADDRESS') ?: '';
 $companyPhone = getenv('COMPANY_PHONE') ?: '';
+$companyAddress = getenv('COMPANY_ADDRESS') ?: '';
+
 $logoPath     = getenv('LOGO_PATH');
 
 // Load logo safely (Base64 for Dompdf compatibility)
@@ -101,6 +105,24 @@ if ($logoPath && file_exists($logoPath)) {
         color: #2563eb;
     }
 
+    .payment-box {
+        margin-top: 30px;
+        padding: 18px;
+        border: 1px solid #e5e7eb;
+        background: #f9fafb;
+        font-size: 13px;
+    }
+
+    .payment-box h3 {
+        margin: 0 0 10px;
+        color: #2563eb;
+        font-size: 16px;
+    }
+
+    .payment-method {
+        margin-bottom: 12px;
+    }
+
     .footer-note {
         margin-top: 40px;
         text-align: center;
@@ -123,8 +145,8 @@ if ($logoPath && file_exists($logoPath)) {
     <div class="company-info">
         <strong><?= htmlspecialchars($companyName) ?></strong><br>
         <?= htmlspecialchars($companyPhone) ?><br>
-        <?=htmlspecialchars($companyAddress) ?><br>
-        <?= htmlspecialchars($companyEmail) ?>
+        <?= htmlspecialchars($companyEmail) ?><br>
+        <?= htmlspecialchars($companyAddress) ?>
     </div>
 </div>
 
@@ -162,6 +184,25 @@ if ($logoPath && file_exists($logoPath)) {
 <!-- TOTAL -->
 <div class="total-box">
     TOTAL: Ksh <?= number_format($invoice['amount'], 2) ?>
+</div>
+
+<!-- PAYMENT DETAILS -->
+<div class="payment-box">
+    <h3>Payment Details</h3>
+
+    <div class="payment-method">
+        <strong>MPESA PAYMENT</strong><br>
+        Paybill: <strong>400200</strong><br>
+        Account: <strong>01134800484100</strong>
+    </div>
+
+    <div class="payment-method">
+        <strong>BANK DEPOSIT / EFT</strong><br>
+        Bank: <strong>Cooperative Bank of Kenya</strong><br>
+        Branch: <strong>Embakasi Junction</strong><br>
+        Account Name: <strong>Avocado Exporters Association of Kenya</strong><br>
+        Account Number: <strong>01134800484100</strong>
+    </div>
 </div>
 
 <!-- FOOTER -->
