@@ -23,19 +23,23 @@ require_once 'config.php';
             <label class="block font-semibold mb-1">Service</label>
             <input 
                 type="text" 
+                name="service_name"
                 value="Annual Member Subscription" 
-                disabled
-                class="w-full p-3 border rounded bg-gray-100"
+                required
+                class="w-full p-3 border rounded focus:outline-none focus:ring focus:border-blue-400"
             >
         </div>
 
         <div>
             <label class="block font-semibold mb-1">Amount (Ksh)</label>
             <input 
-                type="text" 
-                value="30000" 
-                disabled
-                class="w-full p-3 border rounded bg-gray-100"
+                type="number" 
+                name="amount"
+                step="0.01"
+                min="0"
+                placeholder="0.00"
+                required
+                class="w-full p-3 border rounded focus:outline-none focus:ring focus:border-blue-400"
             >
         </div>
 
