@@ -196,16 +196,16 @@ if ($logoPath && file_exists($logoPath)) {
 
     <div class="payment-method">
         <strong>MPESA PAYMENT</strong><br>
-        Paybill: <strong>400200</strong><br>
-        Account: <strong>01134800484100</strong>
+        Paybill: <strong>222111</strong><br>
+        Account: <strong>034000018854</strong>
     </div>
 
     <div class="payment-method">
         <strong>BANK DEPOSIT / EFT</strong><br>
-        Bank: <strong>Cooperative Bank of Kenya</strong><br>
-        Branch: <strong>Embakasi Junction</strong><br>
+        Bank: <strong>Family Bank</strong><br>
+        Branch: <strong>Utawala</strong><br>
         Account Name: <strong>Avocado Exporters Association of Kenya</strong><br>
-        Account Number: <strong>01134800484100</strong>
+        Account Number: <strong>034000018854</strong>
     </div>
 </div>
 
