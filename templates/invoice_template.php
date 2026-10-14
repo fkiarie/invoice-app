@@ -190,22 +190,26 @@ if ($logoPath && file_exists($logoPath)) {
     TOTAL: Ksh <?= number_format($invoice['amount'], 2) ?>
 </div>
 
-<!-- PAYMENT DETAILS -->
+<<!-- PAYMENT DETAILS -->
 <div class="payment-box">
     <h3>Payment Details</h3>
 
+    <?php if (!empty($invoice['paybill_number'])): ?>
     <div class="payment-method">
         <strong>MPESA PAYMENT</strong><br>
-        Paybill: <strong>222111</strong><br>
-        Account: <strong>034000018854</strong>
+        Paybill: <strong><?= htmlspecialchars($invoice['paybill_number']) ?></strong><br>
+        Account: <strong><?= htmlspecialchars($invoice['paybill_account']) ?></strong>
     </div>
+    <?php endif; ?>
 
     <div class="payment-method">
         <strong>BANK DEPOSIT / EFT</strong><br>
-        Bank: <strong>Family Bank</strong><br>
-        Branch: <strong>Utawala</strong><br>
-        Account Name: <strong>Avocado Exporters Association of Kenya</strong><br>
-        Account Number: <strong>034000018854</strong>
+        Bank: <strong><?= htmlspecialchars($invoice['bank_name']) ?></strong><br>
+        <?php if (!empty($invoice['branch'])): ?>
+            Branch: <strong><?= htmlspecialchars($invoice['branch']) ?></strong><br>
+        <?php endif; ?>
+        Account Name: <strong><?= htmlspecialchars($invoice['account_name']) ?></strong><br>
+        Account Number: <strong><?= htmlspecialchars($invoice['account_number']) ?></strong>
     </div>
 </div>
 

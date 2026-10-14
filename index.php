@@ -1,6 +1,9 @@
 <?php 
 include 'header.php'; 
 require_once 'config.php';
+
+// Active bank accounts for the dropdown
+$accounts = $conn->query("SELECT id, label FROM bank_accounts WHERE is_active = 1 ORDER BY id");
 ?>
 
 <h1 class="text-2xl font-bold mb-6">Create Invoice</h1>
@@ -41,6 +44,19 @@ require_once 'config.php';
                 required
                 class="w-full p-3 border rounded focus:outline-none focus:ring focus:border-blue-400"
             >
+        </div>
+
+        <div>
+            <label class="block font-semibold mb-1">Payment Account</label>
+            <select 
+                name="bank_account_id" 
+                required
+                class="w-full p-3 border rounded bg-white focus:outline-none focus:ring focus:border-blue-400"
+            >
+                <?php while ($acc = $accounts->fetch_assoc()): ?>
+                    <option value="<?= (int)$acc['id'] ?>"><?= htmlspecialchars($acc['label']) ?></option>
+                <?php endwhile; ?>
+            </select>
         </div>
 
         <button 
